@@ -1,0 +1,69 @@
+-#include <cstdlib>
+-#include <iostream>
+-
+-using namespace std;
+-
+-int rollDice();
+-void details();
+-
+-int main(int argc, char *argv[])
+-{
+-        enum Status{CONTINUE, WON, LOST};
+-        int myPoint; 
+-        Status gameStatus;   
+-        srand(time(0));
+-        details();
+-        
+-        int sumOfDice=rollDice();
+-        
+-        switch(sumOfDice){
+-                          case 7:
+-                                 case 11:
+-                                         gameStatus=WON;
+-                                         break;
+-                                         case 2:
+-                                                case 3:
+-                                                       case 12:
+-                                                               gameStatus=LOST;
+-                                                               break;
+-                                                               default:
+-                                                                       gameStatus=CONTINUE;
+-                                                                       myPoint=sumOfDice;
+-                                                                       cout<<"Your Points: "<<myPoint<<endl;
+-                                                                       break;
+-                          }     
+-                          
+-                          while(gameStatus==CONTINUE){
+-                                                      cout<<"Press Enter button to roll"<<endl;
+-                                                      getchar();
+-                                                      sumOfDice=rollDice();
+-                                                      if(sumOfDice==myPoint)
+-                                                      gameStatus=WON;
+-                                                      else
+-                                                      if (sumOfDice==7)
+-                                                      gameStatus=LOST;
+-                                                      }
+-                          if(gameStatus==WON)
+-                          cout<<"Congratulation! You WON !!!"<<endl;
+-             else
+-             cout<<"YOU LOST"<<endl;
+-             
+-    system("PAUSE");
+-    return EXIT_SUCCESS;
+-}
+-
+-int rollDice(){
+-               int face1=1+rand()%6;
+-               int face2=1+rand()%6;
+-               int sum=face1+face2;
+-               cout<<"You rolled "<<face1<<" + "<<face2<<" = "<<sum<<endl;
+-               return sum;
+-               }
+-               
+-               void details(){
+-                              cout<<"You win in the first round if you roll 7 or 11."<<endl;
+-                              cout<<"You loose in the first round if you roll 2,3,12."<<endl;
+-                              cout<<"In any other case just continue to roll until you reach ";
+-                              cout<<"the points of the first round. If you roll 7 you lose."<<endl;
+-                              cout<<"------------------------------"<<endl;
+-                              }
